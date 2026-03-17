@@ -1,0 +1,73 @@
+---
+description: Best practices for writing Figma Make prompts so PMs get a single, well-sectioned site that follows SEO and Figma's official guidance.
+globs: "**/guidelines/website-designing/**"
+alwaysApply: false
+---
+
+# Figma Make prompt best practices
+
+When helping create or refine a **Figma Make prompt** for a website (e.g. from a Notion project page), follow Figma’s official guidance and ensure the prompt produces a **correctly sectioned, SEO-minded** site in one shot.
+
+## 1. Front-load the first prompt (Figma blog + developer docs)
+
+The first prompt should contain enough detail that follow-up fixes are minimal. Include:
+
+- **Task**: What Figma Make should build (e.g. “Create a high-fidelity web mockup for…”).
+- **Context**: Where the site fits (business type, audience, goal).
+- **Key design elements**: Hero, nav, sections, footer, CTAs, trust cues.
+- **Expected behaviors**: Sticky header, responsive layout, clear CTAs, link targets.
+- **Constraints**: Device (e.g. mobile-first), layout, styling, breakpoints.
+
+Keep the prompt **structured** (sections, bullets). Avoid long paragraphs—Figma Make responds better to clear, scannable instructions. If the model’s output is wrong, suggest rephrasing (e.g. “move this element down 20px” instead of “vertically align these two elements”).
+
+**References:** [8 Essential Tips for Using Figma Make](https://www.figma.com/blog/8-ways-to-build-with-figma-make/), [How to write great prompts](https://developers.figma.com/docs/code/how-to-write-great-prompts/).
+
+## 2. Explicit sectioning and page structure
+
+So the generated site is **correctly sectioned**, the prompt must list **pages and sections in order**. Example pattern:
+
+- **Pages/sections to design:**  
+  - **Home:** Header (sticky), Hero (headline + subline), [Section name] (e.g. Services grid), [Section name] (e.g. Testimonials), CTA block, Footer (links, contact).  
+  - **Inner page(s):** [Name]: same header/footer; main content sections listed explicitly.
+
+For complex builds, suggest in the prompt: *“Use a clear section structure: one logical block per section (e.g. hero, features, testimonials, CTA, footer). Use semantic sections so the layout is easy to hand off.”* For very large projects, recommend breaking into steps (e.g. “First step: build the base layout with header, hero, and footer; then add the remaining sections one by one”).
+
+## 3. SEO requirements inside the prompt
+
+Weave **SEO** into the prompt so the generated UI and copy support findability and semantics:
+
+- **Target keywords:** Include the top 3 (or agreed) keywords and instruct: *“Weave these into headings and body copy where natural: [keyword 1], [keyword 2], [keyword 3].”*
+- **Heading hierarchy:** One **H1 per page** (e.g. main headline in hero). Then H2 for major sections, H3 for subsections. Specify in the prompt: *“Use a single H1 per page and logical heading order (H1 → H2 → H3).”*
+- **Semantic structure:** Ask for **semantic sections** (e.g. header, main, nav, footer, article/section) so the output is sectioned for accessibility and SEO.
+- **Link text:** Ask for **descriptive link text** (e.g. “Shipping & delivery”, “Return policy”) and direct footer links to key pages (no hiding important links only under “Help” or “FAQ”).
+
+These can be merged into the existing **UX requirements** and **Constraints** in `reference-figma-make-prompt-structure.md`.
+
+## 4. Clear, direct language and no sensitive data
+
+- **Be specific** about the end result (layout, components, copy placement) to reduce wrong assumptions.
+- **Use examples** where helpful (e.g. “Footer: direct links to ‘Shipping’ and ‘Return Policy’ like Competitor 2”).
+- **Do not** put API keys, real addresses, or personal data in the prompt. If the site needs external data, instruct: *“Include a UI element for users to enter [API key / config] rather than hardcoding it.”*
+
+## 5. Figma Sites–specific (when the output is Figma Sites)
+
+If the deliverable is a **Figma Sites** project and the prompt is used there:
+
+- **Modifiable content:** Ask for **reusable components with instance-level content** (e.g. “Use defineProperties so text and images can be set per instance”).
+- **Responsive behavior:** Ask for **breakpoint-aware layout** (e.g. “Use useActiveBreakpoint so layout and visibility adapt to viewport breakpoints”).
+
+## 6. Alignment with project assets
+
+- **Brand assets:** List logo, colors, fonts in the prompt so the first generation matches brand.
+- **Reference/inspiration:** Include competitor or inspiration URLs and **what to take** from each (e.g. “Hero with headline + subline; 3-column services grid; trust badges above footer”).
+- If the PM has **design system components**, suggest pasting key components into the Figma Make prompt box as visual reference so the output matches existing UI.
+
+## 7. Output instruction
+
+End the prompt with a single closing line that reinforces sectioning and handoff, for example:
+
+*“Output a complete, production-ready UI suitable for handoff to a developer. Use clear typography hierarchy, consistent spacing, semantic section structure, and one H1 per page with logical heading order.”*
+
+---
+
+**When generating the prompt:** Use the structure in `guidelines/website-designing/reference-figma-make-prompt-structure.md`, fill from the Notion page and UX rules, and add the **sectioning** and **SEO** requirements above so the PM gets one prompt that builds a well-sectioned, SEO-conscious site.

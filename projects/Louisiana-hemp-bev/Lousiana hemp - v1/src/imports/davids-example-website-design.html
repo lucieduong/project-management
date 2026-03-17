@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Louisiana Hemp Beverage Coalition</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: #0c0c0c; color: #e2ddd6; font-family: 'Libre Baskerville', serif; overflow-x: hidden; }
+
+    /* TYPE */
+    .serif { font-family: 'Playfair Display', serif; }
+
+    /* NAV */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 22px 56px;
+      display: flex; justify-content: space-between; align-items: center;
+      background: rgba(12,12,12,0.92); backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .nav-id { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 0.95rem; letter-spacing: 0.12em; color: #e2ddd6; }
+    .nav-id span { color: #b8935a; }
+    .nav-cta {
+      font-family: 'Libre Baskerville', serif; font-size: 0.78rem;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: #0c0c0c; background: #b8935a;
+      padding: 10px 26px; text-decoration: none;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: #cca96e; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 0 56px 80px;
+      position: relative;
+      border-bottom: 1px solid rgba(184,147,90,0.2);
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(to bottom, rgba(12,12,12,0.3) 0%, rgba(12,12,12,0.85) 70%, #0c0c0c 100%),
+        radial-gradient(ellipse at 65% 40%, rgba(184,147,90,0.08) 0%, transparent 60%),
+        radial-gradient(ellipse at 10% 80%, rgba(60,90,60,0.12) 0%, transparent 50%);
+    }
+    .hero-eyebrow {
+      font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase;
+      color: #b8935a; margin-bottom: 28px; position: relative;
+    }
+    .hero-eyebrow::before {
+      content: ''; display: inline-block;
+      width: 32px; height: 1px; background: #b8935a;
+      vertical-align: middle; margin-right: 14px;
+    }
+    .hero-h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 7vw, 6.5rem);
+      font-weight: 900; line-height: 1.0; letter-spacing: -0.02em;
+      color: #f0ebe2; position: relative; margin-bottom: 40px;
+      max-width: 900px;
+    }
+    .hero-h1 em { font-style: italic; color: #b8935a; }
+    .hero-bottom {
+      display: flex; align-items: flex-end; justify-content: space-between;
+      gap: 40px; flex-wrap: wrap; position: relative;
+    }
+    .hero-statement {
+      font-size: 1.05rem; line-height: 1.85; max-width: 520px; color: #9a928a;
+    }
+    .hero-statement strong { color: #e2ddd6; font-weight: 700; }
+    .hero-clock { text-align: right; }
+    .clock-label { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: #6a6358; margin-bottom: 10px; }
+    .clock-row { display: flex; gap: 8px; justify-content: flex-end; }
+    .clock-unit { text-align: center; }
+    .clock-num {
+      font-family: 'Playfair Display', serif; font-weight: 900;
+      font-size: 2.4rem; color: #b8935a; line-height: 1;
+      display: block; min-width: 64px;
+      border-bottom: 1px solid rgba(184,147,90,0.3); padding-bottom: 6px;
+    }
+    .clock-lbl { font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: #5a5248; margin-top: 5px; display: block; }
+    .clock-sep { font-family: 'Playfair Display', serif; font-size: 2rem; color: rgba(184,147,90,0.3); line-height: 1; padding-top: 2px; }
+
+    /* THE MOMENT */
+    .moment {
+      padding: 110px 56px;
+      display: grid; grid-template-columns: 1fr 2fr; gap: 80px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      max-width: 1200px; margin: 0 auto;
+    }
+    .moment-left { }
+    .section-num { font-family: 'Playfair Display', serif; font-size: 5rem; font-weight: 900; color: rgba(184,147,90,0.12); line-height: 1; margin-bottom: -12px; }
+    .section-label { font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: #b8935a; }
+    .moment-right h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 700;
+      line-height: 1.2; color: #f0ebe2; margin-bottom: 28px;
+    }
+    .moment-right p { font-size: 0.98rem; line-height: 1.9; color: #8a8278; margin-bottom: 20px; }
+    .moment-right p strong { color: #c8c0b0; font-weight: 700; }
+    .moment-right p em { font-style: italic; color: #b8935a; }
+
+    /* PULL QUOTE */
+    .pull {
+      padding: 80px 56px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      background: rgba(184,147,90,0.03);
+    }
+    .pull-inner { max-width: 900px; margin: 0 auto; }
+    .pull blockquote {
+      font-family: 'Playfair Display', serif; font-style: italic;
+      font-size: clamp(1.5rem, 3vw, 2.4rem); font-weight: 700;
+      line-height: 1.35; color: #c8c0b0;
+      border-left: 4px solid #b8935a; padding-left: 36px;
+    }
+    .pull blockquote em { color: #b8935a; font-style: normal; }
+
+    /* WHO */
+    .who {
+      padding: 110px 56px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 2fr; gap: 80px;
+    }
+    .who-right h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 700;
+      line-height: 1.2; color: #f0ebe2; margin-bottom: 28px;
+    }
+    .who-right p { font-size: 0.98rem; line-height: 1.9; color: #8a8278; margin-bottom: 20px; }
+    .who-right p strong { color: #c8c0b0; }
+    .sectors {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.05);
+      margin-top: 36px;
+    }
+    .sector {
+      background: #0c0c0c; padding: 24px 28px;
+    }
+    .sector-name { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; color: #c8c0b0; margin-bottom: 6px; }
+    .sector-desc { font-size: 0.8rem; line-height: 1.65; color: #5a5248; }
+
+    /* CONTACT / CTA */
+    .contact {
+      padding: 120px 56px;
+      text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .contact-bg {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 50% 60%, rgba(184,147,90,0.07) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .contact h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4.5vw, 4rem); font-weight: 900;
+      line-height: 1.1; color: #f0ebe2; margin-bottom: 24px;
+      max-width: 780px; margin-left: auto; margin-right: auto;
+      position: relative;
+    }
+    .contact h2 em { font-style: italic; color: #b8935a; }
+    .contact p {
+      font-size: 1rem; line-height: 1.85; color: #7a7268;
+      max-width: 480px; margin: 0 auto 52px; position: relative;
+    }
+    .contact-btn {
+      display: inline-block;
+      font-family: 'Playfair Display', serif; font-weight: 700;
+      font-size: 1.05rem; letter-spacing: 0.04em;
+      background: #b8935a; color: #0c0c0c;
+      padding: 20px 56px; text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+      position: relative;
+    }
+    .contact-btn:hover { background: #cca96e; transform: translateY(-2px); }
+    .contact-note { margin-top: 24px; font-size: 0.75rem; letter-spacing: 0.06em; color: #3a3830; position: relative; }
+
+    /* FOOTER */
+    footer {
+      padding: 36px 56px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;
+    }
+    .footer-name { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 0.95rem; color: #5a5248; }
+    .footer-legal { font-size: 0.72rem; color: #2e2c28; }
+
+    /* ANIM */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
+    .fu { animation: fadeUp 0.8s ease forwards; }
+    .d1 { animation-delay: 0.1s; opacity: 0; }
+    .d2 { animation-delay: 0.25s; opacity: 0; }
+    .d3 { animation-delay: 0.4s; opacity: 0; }
+    .d4 { animation-delay: 0.58s; opacity: 0; }
+    .d5 { animation-delay: 0.72s; opacity: 0; }
+
+    @media (max-width: 768px) {
+      .nav { padding: 18px 24px; }
+      .hero { padding: 0 24px 64px; }
+      .hero-h1 { font-size: clamp(2.4rem, 10vw, 4rem); }
+      .hero-clock { text-align: left; }
+      .clock-row { justify-content: flex-start; }
+      .moment, .who { padding: 72px 24px; grid-template-columns: 1fr; gap: 32px; }
+      .pull { padding: 56px 24px; }
+      .contact { padding: 80px 24px; }
+      footer { padding: 28px 24px; }
+      .sectors { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <header class="nav">
+    <div class="nav-id serif"><span>LHBC</span> &nbsp;·&nbsp; Louisiana Hemp Beverage Coalition</div>
+    <a href="#contact" class="nav-cta">Get Involved</a>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-eyebrow fu d1">Louisiana Hemp Beverage Coalition</div>
+    <h1 class="hero-h1 fu d2">Louisiana built<br>a market that works.<br><em>Now it needs<br>to be protected.</em></h1>
+    <div class="hero-bottom fu d3">
+      <p class="hero-statement">
+        A federal ban on hemp-derived THC beverages takes effect <strong>November 2026.</strong> Business leaders across Louisiana's hemp, alcohol, and grocery sectors are working with state and federal policymakers to find a path forward — before a billion-dollar, well-regulated industry disappears by default.
+      </p>
+      <div class="hero-clock fu d4">
+        <div class="clock-label">Time until federal ban</div>
+        <div class="clock-row">
+          <div class="clock-unit"><span class="clock-num serif" id="cd">--</span><span class="clock-lbl">Days</span></div>
+          <div class="clock-sep">:</div>
+          <div class="clock-unit"><span class="clock-num serif" id="ch">--</span><span class="clock-lbl">Hours</span></div>
+          <div class="clock-sep">:</div>
+          <div class="clock-unit"><span class="clock-num serif" id="cm">--</span><span class="clock-lbl">Min</span></div>
+          <div class="clock-sep">:</div>
+          <div class="clock-unit"><span class="clock-num serif" id="cs">--</span><span class="clock-lbl">Sec</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE MOMENT -->
+  <section style="background:#0c0c0c; border-bottom: 1px solid rgba(255,255,255,0.05);">
+    <div class="moment">
+      <div class="moment-left">
+        <div class="section-num serif">01</div>
+        <div class="section-label">The Situation</div>
+      </div>
+      <div class="moment-right">
+        <h2>Louisiana built the model. Now Washington needs to get the regulation right.</h2>
+        <p>Louisiana is one of the largest hemp beverage markets in the country — and one of the most regulated. Age restrictions, product registration, third-party testing, licensed retail. The state built a framework that works, and the industry grew responsibly within it.</p>
+        <p>A provision in a 2025 federal funding bill puts that market at risk, with a ban on hemp-derived THC beverages taking effect <strong>November 12, 2026.</strong> The goal of this Coalition is not to fight Washington — it's to make sure Louisiana's experience and regulatory track record informs what comes next at the federal level.</p>
+        <p><em>Smart federal policy already exists at the state level. Louisiana is the proof.</em></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PULL QUOTE -->
+  <div class="pull">
+    <div class="pull-inner">
+      <blockquote>"This is not a fight against Washington. It is an opportunity to show Washington what <em>responsible regulation</em> actually looks like — and Louisiana has already done the work."</blockquote>
+    </div>
+  </div>
+
+  <!-- WHO WE NEED -->
+  <section style="background:#0c0c0c; border-bottom: 1px solid rgba(255,255,255,0.05);">
+    <div class="who">
+      <div class="moment-left">
+        <div class="section-num serif">02</div>
+        <div class="section-label">Who We Need</div>
+      </div>
+      <div class="who-right">
+        <h2>Who we're bringing together</h2>
+        <p>The Louisiana Hemp Beverage Coalition brings together senior business leaders from hemp, alcohol, grocery, and adjacent industries — people with the expertise, credibility, and relationships to engage policymakers directly and make Louisiana's case at the state and federal level.</p>
+        <p>This is industry-led advocacy, grounded in real business experience and a proven regulatory track record.</p>
+        <div class="sectors">
+          <div class="sector">
+            <div class="sector-name serif">Hemp & Cannabis Industry</div>
+            <div class="sector-desc">Manufacturers, brands, distributors, and retailers operating in Louisiana's regulated hemp market.</div>
+          </div>
+          <div class="sector">
+            <div class="sector-name serif">Alcohol & Beverage</div>
+            <div class="sector-desc">Distributors, retailers, and producers who understand the adult beverage market and what regulated commerce looks like.</div>
+          </div>
+          <div class="sector">
+            <div class="sector-name serif">Grocery & Retail</div>
+            <div class="sector-desc">Major retailers with a direct stake in adult-use beverage categories and consumer access.</div>
+          </div>
+          <div class="sector">
+            <div class="sector-name serif">Business & Political Leadership</div>
+            <div class="sector-desc">Executives and civic leaders with relationships in Baton Rouge and Washington who can apply real pressure.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="contact-bg"></div>
+    <h2>Louisiana's leaders<br>need to <em>weigh in.</em></h2>
+    <p>If you represent a business with a stake in this fight, contact the Coalition. We want to hear from you.</p>
+    <a href="/cdn-cgi/l/email-protection#0f6c60617b6e6c7b4f636e676a627f6d6a7921607d68" class="contact-btn">Contact the Coalition</a>
+    <div class="contact-note"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f89b97968c999b8cb89499909d95889a9d8ed6978a9f">[email&#160;protected]</a> &nbsp;·&nbsp; Louisiana Hemp Beverage Coalition</div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-name">Louisiana Hemp Beverage Coalition</div>
+    <div class="footer-legal">A 501(c)(6) trade association. Dues are not tax-deductible as charitable contributions.</div>
+  </footer>
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    const BAN = new Date("2026-11-12T00:00:00");
+    function tick() {
+      const d = BAN - new Date();
+      if (d < 0) return;
+      document.getElementById("cd").textContent = String(Math.floor(d/86400000)).padStart(3,"0");
+      document.getElementById("ch").textContent = String(Math.floor(d/3600000%24)).padStar
